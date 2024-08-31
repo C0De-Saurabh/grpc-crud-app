@@ -31,7 +31,7 @@ func (s *TodoService) CreateTodo(ctx context.Context, req *todo.Todo) (*todo.Tod
 func (s *TodoService) GetTodo(ctx context.Context, req *todo.TodoId) (*todo.Todo, error) {
 	todoItem, found := s.repo.Get(req.Id)
 	if !found {
-		return nil, nil // In production, you should return a proper error
+		return nil, nil
 	}
 	return &todo.Todo{
 		Id:          todoItem.ID,
