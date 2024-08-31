@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package todo;
+
+option go_package = "grpc-crud-app/api/proto/todo";
+
+
+service TodoService {
+    rpc CreateTodo (Todo) returns (Todo);
+    rpc GetTodo (TodoId) returns (Todo);
+    rpc UpdateTodo (Todo) returns (Todo);
+    rpc DeleteTodo (TodoId) returns (Empty);
+    rpc ListTodos (Empty) returns (stream Todo);
+}
+
+
+message Todo {
+    int32 id = 1;
+    string title = 2;
+    string description = 3;
+}
+
+message TodoId {
+    int32 id = 1;
+}
+
+message Empty {
+}
